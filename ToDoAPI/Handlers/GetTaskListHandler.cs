@@ -20,7 +20,7 @@ namespace ToDoAPI.Handlers
         }
         public Task<List<ToDoItemModel>> Handle(GetTaskListQuery request, CancellationToken cancellationToken)
         {
-            return Task.FromResult(_dataaccess.GetTask());
+            return Task.FromResult(_dataaccess.GetTask(request.user));
         }
     }
 }

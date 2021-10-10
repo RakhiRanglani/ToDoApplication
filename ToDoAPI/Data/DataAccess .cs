@@ -22,9 +22,9 @@ namespace ToDoAPI.Data
             _context = context;
         }
       
-        public List<ToDoItemModel> GetTask()
-        {
-            _todorepo = _context.ToDoItems.ToList();
+        public List<ToDoItemModel> GetTask(string user)
+         {
+            _todorepo = _context.ToDoItems.Where(a=>a.UserName==user).ToList();
             return _todorepo;
         }
 
@@ -37,12 +37,6 @@ namespace ToDoAPI.Data
             await _context.SaveChangesAsync();
             return itemId;
            
-        }
-
-        public async Task<ToDoItemModel> GetTaskById(int itemId)
-        {
-            var toDoItemModel = await _context.ToDoItems.FindAsync(itemId);
-            return toDoItemModel;
         }
 
         public ToDoItemModel AddTask(string ItemName, string ItemDescription, bool ItemStatus, string UserName, DateTime LastUpdated)

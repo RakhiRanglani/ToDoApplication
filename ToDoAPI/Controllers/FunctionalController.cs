@@ -24,22 +24,11 @@ namespace ToDoAPI.Controllers
         }
 
         // GET: api/Functional
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<ToDoItemModel>>> GetToDoItems()
+        [HttpGet("{user}")]
+        public async Task<ActionResult<IEnumerable<ToDoItemModel>>> GetToDoItems(string user)
         {
-            return await _mediator.Send(new GetTaskListQuery());
+            return await _mediator.Send(new GetTaskListQuery(user));
         }
-
-        // GET: api/Functional/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<ToDoItemModel>> GetToDoItemModel(int id)
-        {
-           
-
-            return await _mediator.Send(new GetTaskByIdQuery(id));
-
-        }
-
         // PUT: api/Functional/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
