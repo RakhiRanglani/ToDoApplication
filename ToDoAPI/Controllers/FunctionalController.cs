@@ -64,11 +64,7 @@ namespace ToDoAPI.Controllers
         public async Task<IActionResult> DeleteToDoItemModel(int id)
         {
             var toDoItemModel = await _mediator.Send(new DeleteTaskCommand(id));
-            if (toDoItemModel == null)
-            {
-                return NotFound();
-            }
-
+           
             return NoContent();
         }
 

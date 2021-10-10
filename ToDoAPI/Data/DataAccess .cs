@@ -21,14 +21,7 @@ namespace ToDoAPI.Data
         {
             _context = context;
         }
-        public async Task<int> AddTask(ToDoItemModel taskModel)
-        {
-            _context.ToDoItems.Add(taskModel);
-            await _context.SaveChangesAsync();
-            return taskModel.ItemId;
-
-        }
-
+      
         public List<ToDoItemModel> GetTask()
         {
             _todorepo = _context.ToDoItems.ToList();
